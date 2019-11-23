@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import CardDisplay from "./components/CardDisplay.js";
+import './App.scss';
+import CardDisplay from "./components/CardDisplay.js"
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <CardDisplay limit = {5} />
+      <CardDisplay limit = {10} />
     </div>
   );
 }

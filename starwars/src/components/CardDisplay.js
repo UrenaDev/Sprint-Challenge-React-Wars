@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Card from "./Card"
-import {Container} from "semantic-ui-react"
+import {Container, Grid} from "semantic-ui-react"
 
 function CardDisplay({limit}) {
   const [cardInfo, setCardInfo] = useState([]);
 
-  useState(() => {
+  useEffect(() => {
     axios
     .get(`https://swapi.co/api/people/`, {
       params: {}
@@ -20,16 +20,21 @@ function CardDisplay({limit}) {
 
   return (
     <Container>
-      {cardInfo.map(cardInfo => {
-        return (
-          <Card
-          key = {cardInfo.url}
-          name = {cardInfo.name}
-          birthday = {cardInfo.birth_year}
-          homeworld = {cardInfo.homeworld}
-          />
-        )
-      }  )}
+      <Grid relaxed columns = {1} divided>
+        <Grid.Row>
+          {cardInfo.map(cardInfo => {
+            return (
+              <Card
+              key = {cardInfo.url}
+              name = {cardInfo.name}
+              birthday = {cardInfo.birth_year}
+              //homeworld = {cardInfo.homeworld}
+              gender = {cardInfo.gender}
+              />
+            )
+          })}
+        </Grid.Row>
+      </Grid>  
     </Container>
   )  
 
